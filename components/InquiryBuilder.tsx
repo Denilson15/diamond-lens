@@ -33,7 +33,7 @@ export function InquiryBuilder() {
     const lines = [
       `Hi Braulio! I'd like to book a shoot.`,
       form.name && `Name: ${form.name}`,
-      form.team && `Team / organization: ${form.team}`,
+      form.team && `Team / business / family: ${form.team}`,
       `Type: ${form.type}`,
       form.date && `Date: ${new Date(form.date + "T12:00").toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", year: "numeric" })}`,
       form.location && `Location: ${form.location}`,
@@ -64,8 +64,8 @@ export function InquiryBuilder() {
         <input required value={form.name} onChange={set("name")} className={field} placeholder="Jane Parent" autoComplete="name" />
       </label>
       <label className="block">
-        <span className={label}>Team / organization</span>
-        <input value={form.team} onChange={set("team")} className={field} placeholder="Bay Area Bombers 12U" />
+        <span className={label}>Team / business / family</span>
+        <input value={form.team} onChange={set("team")} className={field} placeholder="Team, business, or family name" />
       </label>
       <label className="block">
         <span className={label}>Type of shoot</span>
@@ -81,8 +81,8 @@ export function InquiryBuilder() {
         <input type="date" value={form.date} onChange={set("date")} className={`${field} [color-scheme:dark]`} />
       </label>
       <label className="block sm:col-span-2">
-        <span className={label}>Field / location</span>
-        <input value={form.location} onChange={set("location")} className={field} placeholder="e.g. Central Park fields, Fremont" />
+        <span className={label}>Location</span>
+        <input value={form.location} onChange={set("location")} className={field} placeholder="Field, venue or address" />
       </label>
       <label className="block sm:col-span-2">
         <span className={label}>Anything else?</span>
@@ -91,7 +91,7 @@ export function InquiryBuilder() {
           onChange={set("notes")}
           rows={4}
           className={`${field} resize-y`}
-          placeholder="Player names & numbers, game times, what you're hoping to get…"
+          placeholder="What's the occasion, how long, any must-have shots…"
         />
       </label>
 

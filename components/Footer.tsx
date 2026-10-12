@@ -41,7 +41,12 @@ export function Footer() {
       <div className="border-t border-line">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-xs text-muted sm:flex-row sm:justify-between sm:px-6 lg:px-8">
           <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
-          <p>Sample images are placeholders from Flickr (Creative Commons) via LoremFlickr.</p>
+          <p>
+            Placeholder photos are Creative Commons from Flickr.{" "}
+            <Link href="/credits/" className="underline underline-offset-4 hover:text-cream-dim">
+              Photo credits
+            </Link>
+          </p>
         </div>
       </div>
     </footer>

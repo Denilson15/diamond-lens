@@ -1,6 +1,6 @@
 # B.A. Diamond Lens: Website
 
-Portfolio site for **Braulio A. / @ba_diamondlens**: softball, baseball, event and car-show photography in the Bay Area.
+Portfolio site for **Braulio A. / @ba_diamondlens**: sports, events and everything in between, in the Bay Area.
 
 Built with Next.js (App Router), TypeScript, Tailwind CSS v4 and Framer Motion. It exports as a fully static site.
 
@@ -25,22 +25,22 @@ npm run build      # static site written to ./out
 
 ### Swapping in real photos
 
-1. Export the photos as JPG/WebP, about 2000px on the long side, and drop them in `public/photos/`.
-2. In `data/photos.ts`, replace a placeholder entry with:
+The current photos in `public/photos/` are **Creative Commons placeholders** from Flickr. Their credits are
+listed on `/credits` and in the full-screen viewer. To replace them:
+
+1. Export his photos as JPG, about 2000px on the long side, and drop them in `public/photos/`.
+2. In `data/photos.ts`, add an entry for each one (no `credit` needed for his own work):
    ```ts
-   { id: "pitcher-01", src: "/photos/pitcher-01.jpg", alt: "Pitcher mid-delivery", category: "diamond", width: 1600, height: 2000 },
+   { id: "pitcher-01", category: "diamond", src: "/photos/pitcher-01.jpg", width: 1600, height: 2000, alt: "Pitcher mid-delivery" },
    ```
    `category` is `"diamond"`, `"events"` or `"cars"`. `width`/`height` only need the right ratio.
-3. Update `heroPhoto`, `featuredIds`, `storyPhoto` and `portraitPhoto` at the bottom of that file.
-4. Delete the placeholder-credit line in `components/Footer.tsx`.
+3. Update `galleryOrder`, `heroPhoto`, `featuredIds`, `storyPhoto`, `portraitPhoto` and `aboutPhotos` in that file.
+4. Once every placeholder is gone, delete the old files, `app/credits/`, and the credits line in `components/Footer.tsx`.
 
-## Deploy to Vercel
+## Deploy
 
-1. Push this folder to a GitHub repo (e.g. `diamond-lens`).
-2. Go to vercel.com → **Add New → Project** → import the repo. The defaults work as-is.
-3. Optional: under **Settings → Domains**, add a custom domain such as `diamondlens.com`.
-
-Every push to `main` redeploys automatically.
+Live on Netlify: https://ba-diamond-len.netlify.app (`netlify.toml` builds with `npm run build` and publishes `out/`).
+Linking this repo in the Netlify project makes every push to `main` redeploy automatically.
 
 ## Booking flow
 

@@ -1,6 +1,6 @@
 import { DiamondMark } from "./DiamondMark";
 
-const items = ["Game Day", "Team Portraits", "Tournaments", "Senior Night", "Events", "Car Shows", "Action Shots", "Dugout Candids"];
+const items = ["Game Day", "Team Photos", "Birthdays", "Quinceañeras", "Graduations", "Business Events", "Car Shows", "Family Parties", "Senior Night"];
 
 // Infinite scrolling strip of what he shoots. Pure CSS; duplicated once for a seamless loop.
 export function Marquee() {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Photo as PhotoT } from "@/data/photos";
 import { DiamondMark } from "./DiamondMark";
 
@@ -20,6 +20,16 @@ type Props = {
 export function Photo({ photo, className = "", imgClassName = "", priority, aspect }: Props) {
   const [failed, setFailed] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  // Static HTML can finish loading the image before React hydrates, in which
+  // case onLoad/onError never fire. Check the element's state on mount.
+  useEffect(() => {
+    const img = imgRef.current;
+    if (!img || !img.complete) return;
+    if (img.naturalWidth > 0) setLoaded(true);
+    else setFailed(true);
+  }, []);
 
   return (
     <div
@@ -37,6 +47,7 @@ export function Photo({ photo, className = "", imgClassName = "", priority, aspe
       </div>
       {!failed && (
         <img
+          ref={imgRef}
           src={photo.src}
           alt={photo.alt}
           width={photo.width}

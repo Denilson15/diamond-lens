@@ -11,11 +11,11 @@ export function CtaBand() {
         <div className="relative max-w-2xl">
           <p className="eyebrow !text-cream/70">Now booking · {site.regionShort}</p>
           <h2 className="mt-4 font-display text-4xl font-medium uppercase leading-[0.95] tracking-tight sm:text-6xl">
-            Let&rsquo;s get your team{" "}
-            <span className="font-serif font-normal normal-case italic tracking-normal text-cream/80">in the frame.</span>
+            Got something{" "}
+            <span className="font-serif font-normal normal-case italic tracking-normal text-cream/80">coming up?</span>
           </h2>
           <p className="mt-5 max-w-lg text-cream/75">
-            Games, tournaments, team portraits, events and car shows. Send a message with your date and I&rsquo;ll get back to you.
+            Games, parties, graduations, business events, car shows, whatever it is. Send me the date and I&rsquo;ll get back to you.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button href={site.instagramDmUrl} external>

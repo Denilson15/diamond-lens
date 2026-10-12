@@ -13,7 +13,7 @@ export const site = {
   get instagramDmUrl() {
     return `https://ig.me/m/${this.instagramHandle}`;
   },
-  tagline: "Softball, baseball & event photography",
+  tagline: "Sports, events & everything in between",
 } as const;
 
 export const navLinks = [

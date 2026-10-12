@@ -11,14 +11,14 @@ import { Providers } from "@/components/Providers";
 
 export const metadata: Metadata = {
   title: {
-    default: `${site.name} | Softball, Baseball & Event Photography, ${site.regionShort}`,
+    default: `${site.name} | Sports & Event Photography, ${site.regionShort}`,
     template: `%s | ${site.name}`,
   },
   description:
-    "Game-day action, team portraits, tournaments, events and car shows, photographed by Braulio of B.A. Diamond Lens. Serving the Bay Area.",
+    "Game days, team photos, birthdays, quinceañeras, graduations, business events and car shows. Photography by Braulio of B.A. Diamond Lens, serving the Bay Area.",
   openGraph: {
     title: site.name,
-    description: "Every play. Every moment. Softball, baseball & event photography in the Bay Area.",
+    description: "Every play. Every moment. Sports and event photography in the Bay Area.",
     type: "website",
   },
 };

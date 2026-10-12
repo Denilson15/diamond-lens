@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { photos, portraitPhoto } from "@/data/photos";
+import { aboutPhotos, portraitPhoto } from "@/data/photos";
 import { site } from "@/data/site";
 import { PageHeader } from "@/components/PageHeader";
 import { Photo } from "@/components/Photo";
@@ -10,29 +10,27 @@ import { CtaBand } from "@/components/CtaBand";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "How a softball dad with a camera became B.A. Diamond Lens, a Bay Area sports and event photographer.",
+  description: "How a softball dad with a camera became B.A. Diamond Lens, a Bay Area photographer for sports and all kinds of events.",
 };
-
-const byId = (id: string) => photos.find((p) => p.id === id)!;
 
 const chapters = [
   {
     label: "First inning",
     title: "It started with my daughter",
     body: "I started bringing my camera to my daughter's softball games because I didn't want to miss anything. Her at-bats, plays in the field, the girls messing around in the dugout. I just wanted pictures that felt like you were there.",
-    photo: byId("d03"),
+    photo: aboutPhotos.daughter,
   },
   {
     label: "Word gets around",
     title: "“Can you get my kid too?”",
     body: "Other parents saw the pics and started asking if I could get their kids too. I didn't mind. Pretty soon I was shooting the whole team every weekend, and people started offering to pay me for it.",
-    photo: byId("d05"),
+    photo: aboutPhotos.parents,
   },
   {
     label: "Extra innings",
     title: "Now it's more than softball",
-    body: "That's how B.A. Diamond Lens started. I'm still at the field most weekends, but now I also shoot events for local businesses and car shows around the Bay.",
-    photo: byId("cars01"),
+    body: "That's how B.A. Diamond Lens started. I'm still at the field most weekends, but now I shoot all kinds of stuff: birthdays, quinces, graduations, business events, car shows. If you've got something going on, I'll come out.",
+    photo: aboutPhotos.beyond,
   },
 ];
 
@@ -69,8 +67,8 @@ export default function AboutPage() {
           <div className="grid gap-8 sm:grid-cols-3">
             {[
               ["Softball", "where it all began"],
-              ["Bay Area", "fields, gyms & events"],
-              ["Every kid", "on the roster"],
+              ["Any event", "parties, quinces, business"],
+              ["Bay Area", "wherever you need me"],
             ].map(([big, small]) => (
               <div key={big}>
                 <p className="font-display text-3xl uppercase">{big}</p>

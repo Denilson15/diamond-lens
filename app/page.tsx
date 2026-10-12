@@ -52,7 +52,8 @@ export default function Home() {
           </Reveal>
           <Reveal delay={0.15} className="mt-10 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
             <p className="max-w-md text-base leading-relaxed text-cream-dim sm:text-lg">
-              Softball and baseball action, team portraits, events and car shows, shot by a dad who started in the stands.
+              Started at his daughter&rsquo;s softball games. Now shooting game days, parties, graduations,
+              business events, car shows&hellip; whatever you&rsquo;ve got going on.
             </p>
             <div className="flex flex-wrap gap-3">
               <Button href="/gallery/">
@@ -113,8 +114,9 @@ export default function Home() {
                 offering to pay him.
               </p>
               <p className="mt-4">
-                That&rsquo;s how Diamond Lens started. He&rsquo;s still at the field most weekends, and now he
-                shoots events, local businesses and car shows around the Bay too.
+                That&rsquo;s how Diamond Lens started. He&rsquo;s still at the field most weekends, but now he
+                shoots all kinds of events around the Bay: birthdays, quinces, graduations, business events, car
+                shows, you name it.
               </p>
             </SectionHeading>
             <div className="mt-8">
@@ -129,7 +131,7 @@ export default function Home() {
       {/* SERVICES PREVIEW */}
       <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <SectionHeading eyebrow="Services" title="Book the" accent="whole season." />
+          <SectionHeading eyebrow="Services" title="Games, parties" accent="& everything in between." />
           <Link
             href="/services/"
             className="group inline-flex items-center gap-2 font-display text-sm uppercase tracking-[0.16em] text-cream-dim transition-colors hover:text-cream"

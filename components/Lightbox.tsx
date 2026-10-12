@@ -105,7 +105,18 @@ export function Lightbox({
           </button>
         ))}
       </div>
-      <p className="px-4 pb-5 text-center text-sm text-cream-dim">{photo.alt}</p>
+      <p className="px-4 pb-5 text-center text-sm text-cream-dim">
+        {photo.alt}
+        {photo.credit && (
+          <span className="mt-1 block text-xs text-muted">
+            Photo:{" "}
+            <a href={photo.credit.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-cream-dim">
+              {photo.credit.author}
+            </a>{" "}
+            · {photo.credit.license}
+          </span>
+        )}
+      </p>
     </div>
   );
 }

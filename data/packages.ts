@@ -26,6 +26,20 @@ export const packages: Package[] = [
     turnaround: "3–5 days",
   },
   {
+    id: "events",
+    name: "Parties & Events",
+    priceFrom: 300,
+    unit: "starting, 2 hrs",
+    blurb: "Birthdays, quinceañeras, graduations, baby showers, family parties, business events. If it's worth remembering, I'll be there.",
+    includes: [
+      "Up to 2 hours on site",
+      "Candids, family & group shots",
+      "Online gallery everyone can download from",
+      "Business events get commercial use",
+    ],
+    turnaround: "5–7 days",
+  },
+  {
     id: "team",
     name: "Team & Individual Portraits",
     priceFrom: 250,
@@ -55,20 +69,6 @@ export const packages: Package[] = [
     turnaround: "Highlights in 48 hrs",
   },
   {
-    id: "events",
-    name: "Events & Business",
-    priceFrom: 300,
-    unit: "starting, 2 hrs",
-    blurb: "Openings, company parties, community events and team headshots for local businesses.",
-    includes: [
-      "Up to 2 hours on site",
-      "Candids, speakers & group shots",
-      "Social-media ready crops",
-      "Commercial usage for your business",
-    ],
-    turnaround: "5–7 days",
-  },
-  {
     id: "cars",
     name: "Car Shows & Automotive",
     priceFrom: 150,
@@ -85,6 +85,10 @@ export const packages: Package[] = [
 ];
 
 export const faqs = [
+  {
+    q: "Do you only do sports?",
+    a: "Nah. Sports is how I got started, but I'll shoot pretty much any event: birthdays, quinces, graduations, baby showers, business stuff, car shows. Just hit me up.",
+  },
   {
     q: "How do I book?",
     a: "Just DM me on Instagram with the date, where it's at, and what you're looking for. The Contact page can write the message for you.",

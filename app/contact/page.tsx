@@ -7,13 +7,13 @@ import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Contact & Booking",
-  description: "Book B.A. Diamond Lens for your team, tournament, event or car show. Message on Instagram.",
+  description: "Book B.A. Diamond Lens for your game, party, graduation, business event or car show. Message on Instagram.",
 };
 
 export default function ContactPage() {
   return (
     <>
-      <PageHeader eyebrow="Contact & booking" title="Let's talk" accent="game day.">
+      <PageHeader eyebrow="Contact & booking" title="Let's talk" accent="about your event.">
         <p>
           Bookings happen over Instagram DM. Fill this out and your message is written and copied for you, then
           Instagram opens so you can paste and send.
@@ -48,7 +48,7 @@ export default function ContactPage() {
           <div className="rounded-3xl border border-line p-8">
             <p className="eyebrow">Helpful to include</p>
             <ul className="mt-4 space-y-2.5 text-sm text-cream-dim">
-              {["Date & first pitch time", "Field or venue", "Player names & jersey numbers", "Single player, team, or event"].map((t) => (
+              {["Date & start time", "Venue, field or address", "What kind of event it is", "Roughly how many people"].map((t) => (
                 <li key={t} className="flex gap-3">
                   <span className="mt-1.5 size-1.5 shrink-0 rotate-45 bg-field-bright" aria-hidden />
                   {t}

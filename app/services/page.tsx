@@ -9,7 +9,7 @@ import { CtaBand } from "@/components/CtaBand";
 
 export const metadata: Metadata = {
   title: "Services & Pricing",
-  description: "Game day coverage, team portraits, tournament weekends, events and car shows in the Bay Area.",
+  description: "Game days, team photos, birthdays, quinceañeras, graduations, business events and car shows in the Bay Area.",
 };
 
 const steps = [
@@ -24,8 +24,8 @@ export default function ServicesPage() {
     <>
       <PageHeader eyebrow="Services & pricing" title="Pick your" accent="lineup.">
         <p>
-          Simple packages for players, teams, businesses and car owners. Not sure what fits? Send a message and
-          we&rsquo;ll build it together.
+          Sports is where I started, but I&rsquo;ll shoot pretty much any event. Here are a few starting points.
+          Don&rsquo;t see yours? Just send me a message and we&rsquo;ll figure it out.
         </p>
       </PageHeader>
 
