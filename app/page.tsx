@@ -1,69 +1,153 @@
-import Image from "next/image";
+import Link from "next/link";
+import { featuredIds, heroPhoto, photos, storyPhoto } from "@/data/photos";
+import { packages } from "@/data/packages";
+import { site } from "@/data/site";
+import { Photo } from "@/components/Photo";
+import { Button, ArrowIcon, InstagramIcon } from "@/components/Button";
+import { Reveal } from "@/components/Reveal";
+import { SectionHeading } from "@/components/SectionHeading";
+import { Marquee } from "@/components/Marquee";
+import { PackageCard } from "@/components/PackageCard";
+import { Testimonials } from "@/components/Testimonials";
+import { CtaBand } from "@/components/CtaBand";
+
+const featured = featuredIds.map((id) => photos.find((p) => p.id === id)!);
+// Bento layout spans for the 6 featured tiles (lg+).
+const spans = [
+  "lg:col-span-2 lg:row-span-2",
+  "lg:col-span-2",
+  "",
+  "",
+  "lg:col-span-2",
+  "col-span-2",
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+    <>
+      {/* HERO */}
+      <section className="relative isolate flex min-h-[100svh] items-end overflow-hidden">
+        <Photo
+          photo={heroPhoto}
           priority
+          className="!absolute inset-0 -z-10"
+          imgClassName="animate-kenburns"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/50 to-ink/30" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/70 to-transparent" />
+
+        <div className="mx-auto w-full max-w-7xl px-4 pt-32 pb-16 sm:px-6 sm:pb-24 lg:px-8">
+          <Reveal>
+            <p className="eyebrow">
+              {site.name} <span className="text-cream/40">·</span> {site.regionShort}
+            </p>
+            <h1 className="mt-6 font-display text-[clamp(3.25rem,11vw,9.5rem)] font-medium uppercase leading-[0.86] tracking-tight">
+              Every play.
+              <br />
+              Every moment.
+              <span className="mt-3 block font-serif text-[0.42em] font-normal normal-case italic leading-tight tracking-normal text-cream/80">
+                captured from the diamond.
+              </span>
+            </h1>
+          </Reveal>
+          <Reveal delay={0.15} className="mt-10 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+            <p className="max-w-md text-base leading-relaxed text-cream-dim sm:text-lg">
+              Softball and baseball action, team portraits, events and car shows, shot by a dad who started in the stands.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Button href="/gallery/">
+                View gallery <ArrowIcon />
+              </Button>
+              <Button href={site.instagramDmUrl} external variant="ghost">
+                <InstagramIcon /> Book a shoot
+              </Button>
+            </div>
+          </Reveal>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </section>
+
+      <Marquee />
+
+      {/* FEATURED WORK */}
+      <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <SectionHeading eyebrow="Featured work" title="Game faces &" accent="golden hours." />
+          <Link
+            href="/gallery/"
+            className="group inline-flex items-center gap-2 font-display text-sm uppercase tracking-[0.16em] text-cream-dim transition-colors hover:text-cream"
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            Full gallery <ArrowIcon className="size-4 transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
-      </main>
-    </div>
+        <div className="mt-14 grid auto-rows-[240px] grid-cols-2 gap-3 sm:auto-rows-[280px] sm:gap-4 lg:grid-cols-4">
+          {featured.map((p, i) => (
+            <Reveal key={p.id} delay={(i % 3) * 0.08} className={`${spans[i]} ${i === 0 ? "col-span-2 row-span-2" : ""}`}>
+              <Link href="/gallery/" className="group relative block h-full overflow-hidden rounded-xl">
+                <Photo
+                  photo={p}
+                  className="h-full"
+                  imgClassName="transition-transform duration-[1.2s] ease-out group-hover:scale-105"
+                />
+                <span className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* STORY TEASER */}
+      <section className="border-y border-line bg-ink-2">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-24 sm:px-6 sm:py-32 lg:grid-cols-2 lg:gap-20 lg:px-8">
+          <Reveal className="relative">
+            <Photo photo={storyPhoto} className="aspect-[4/5] rounded-2xl" />
+            <div className="absolute -right-3 -bottom-6 max-w-[16rem] rounded-2xl border border-line bg-ink p-5 shadow-2xl sm:-right-8">
+              <p className="font-serif text-lg italic leading-snug">&ldquo;It started with one player: my daughter.&rdquo;</p>
+              <p className="eyebrow mt-3 !text-[0.6rem]">Braulio, photographer</p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <SectionHeading eyebrow="The story" title="It started" accent="in the stands.">
+              <p>
+                Braulio picked up a camera to capture his daughter playing softball. Before long, other parents
+                on the team were asking if he could grab a few shots of their kids too. Then they started
+                offering to pay.
+              </p>
+              <p className="mt-4">
+                Diamond Lens grew from there. It&rsquo;s still rooted in the ball field, and it now covers events,
+                local businesses and car shows across the Bay Area.
+              </p>
+            </SectionHeading>
+            <div className="mt-8">
+              <Button href="/about/" variant="ghost">
+                Read the full story <ArrowIcon />
+              </Button>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* SERVICES PREVIEW */}
+      <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <SectionHeading eyebrow="Services" title="Book the" accent="whole season." />
+          <Link
+            href="/services/"
+            className="group inline-flex items-center gap-2 font-display text-sm uppercase tracking-[0.16em] text-cream-dim transition-colors hover:text-cream"
+          >
+            All packages <ArrowIcon className="size-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
+        <div className="mt-14 grid gap-5 md:grid-cols-3">
+          {packages.slice(0, 3).map((p, i) => (
+            <Reveal key={p.id} delay={i * 0.1}>
+              <PackageCard pkg={p} compact />
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <Testimonials />
+      <CtaBand />
+    </>
   );
 }

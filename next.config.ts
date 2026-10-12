@@ -1,9 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  // Fully static site: `next build` writes plain HTML/CSS/JS to /out.
+  // Works on Vercel out of the box and on any static host.
+  output: "export",
+  trailingSlash: true,
+  images: { unoptimized: true },
   turbopack: {
     rules: {
       "*.css": {
