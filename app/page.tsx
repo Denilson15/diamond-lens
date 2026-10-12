@@ -31,10 +31,10 @@ export default function Home() {
           photo={heroPhoto}
           priority
           className="!absolute inset-0 -z-10"
-          imgClassName="animate-kenburns"
+          imgClassName="object-[50%_100%]"
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/50 to-ink/30" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/70 to-transparent" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/45 to-ink/10" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/60 to-transparent" />
 
         <div className="mx-auto w-full max-w-7xl px-4 pt-32 pb-16 sm:px-6 sm:pb-24 lg:px-8">
           <Reveal>

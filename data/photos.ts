@@ -33,6 +33,7 @@ export const categoryLabel: Record<Photo["category"], string> = {
  * width/height only need the right ratio (they set the tile shape).
  */
 const library: Photo[] = [
+  { id: "hero-field-night", category: "diamond", src: "/photos/hero-field-night.jpg", width: 1920, height: 1440, alt: "Ballpark under the lights at night", credit: { author: "Keiteay", license: "CC0 1.0", url: "https://commons.wikimedia.org/w/index.php?curid=163578156" } },
   { id: "hero-pitcher", category: "diamond", src: "/photos/hero-pitcher.jpg", width: 1024, height: 680, alt: "Softball pitcher mid-windmill on a sunny afternoon", credit: { author: "ShuttrKing|KT", license: "CC BY 2.0", url: "https://www.flickr.com/photos/46705519@N07/5770084724" } },
   { id: "pitcher-stride", category: "diamond", src: "/photos/pitcher-stride.jpg", width: 1024, height: 1024, alt: "Pitcher driving off the rubber", credit: { author: "mark6mauno", license: "CC BY 2.0", url: "https://www.flickr.com/photos/98147195@N00/32664603993" } },
   { id: "pitcher-green", category: "diamond", src: "/photos/pitcher-green.jpg", width: 1024, height: 683, alt: "Softball pitcher releasing the ball", credit: { author: "New Deal Lions Sports and then some", license: "CC BY 2.0", url: "https://www.flickr.com/photos/86329203@N08/13387586805" } },
@@ -87,7 +88,7 @@ const galleryOrder = [
 export const photos: Photo[] = galleryOrder.map(byId);
 
 // Hand-picked slots used around the site.
-export const heroPhoto = byId("hero-pitcher");
+export const heroPhoto = byId("hero-field-night");
 export const featuredIds = ["pitcher-stride", "field-lights", "team-photo", "lowrider-impala", "batter-contact", "event-stage"];
 export const storyPhoto = byId("pitcher-release");
 export const portraitPhoto = byId("photographers");

@@ -18,13 +18,7 @@
   --font-serif: "Instrument Serif", Georgia, serif;
   --font-sans: "Inter Variable", system-ui, sans-serif;
 
-  --animate-kenburns: kenburns 24s ease-out both;
   --animate-marquee: marquee 40s linear infinite;
-}
-
-@keyframes kenburns {
-  from { transform: scale(1.15) translate3d(1.5%, 1%, 0); }
-  to { transform: scale(1) translate3d(0, 0, 0); }
 }
 
 @keyframes marquee {
