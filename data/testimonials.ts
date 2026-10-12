@@ -2,20 +2,20 @@
 export const testimonials = [
   {
     quote:
-      "He caught my daughter's first home run, the swing, the trot and the dogpile at home plate. We framed all three.",
-    name: "Softball parent",
-    detail: "14U travel team",
+      "Braulio came out to our tournament and got every single one of the girls. My daughter's been using his pics as her profile pic all season lol",
+    name: "Softball mom",
+    detail: "12U travel ball",
   },
   {
     quote:
-      "Our team banner has never looked this good. Every kid got a portrait that actually looks like them.",
-    name: "Team manager",
-    detail: "Rec league, Bay Area",
+      "We hit him up last minute for team pics and he still pulled up. Pics came back fast and they came out clean. The girls loved them.",
+    name: "Team mom",
+    detail: "East Bay",
   },
   {
     quote:
-      "Professional, easy to work with, and the gallery was ready before we'd finished the cleanup.",
-    name: "Small business owner",
-    detail: "Grand opening event",
+      "Had him shoot our shop's anniversary. Easy to work with, didn't get in anybody's way, and the pics actually look like us.",
+    name: "Local business owner",
+    detail: "Bay Area",
   },
 ];

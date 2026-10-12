@@ -87,18 +87,18 @@ export const packages: Package[] = [
 export const faqs = [
   {
     q: "How do I book?",
-    a: "Send a DM on Instagram with your date, location and what you need. The Contact page can write the message for you.",
+    a: "Just DM me on Instagram with the date, where it's at, and what you're looking for. The Contact page can write the message for you.",
   },
   {
     q: "Do you travel?",
-    a: "Yes. I cover fields and events all around the Bay Area. Tournaments farther out are welcome too; just ask.",
+    a: "Yeah, I'm all over the Bay. If your tournament's farther out, hit me up and we'll figure it out.",
   },
   {
     q: "How do we get our photos?",
-    a: "You get a private online gallery where you can view, download and share full-resolution images.",
+    a: "I send you a link to an online gallery where you can look through everything and download the full-size pics.",
   },
   {
     q: "Can parents split a team package?",
-    a: "Absolutely. Team packages are set up so the cost can be shared across the roster.",
+    a: "Yeah, a lot of teams do that. The team packages are set up so parents can split it.",
   },
 ];

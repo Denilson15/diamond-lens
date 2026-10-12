@@ -18,28 +18,28 @@ const byId = (id: string) => photos.find((p) => p.id === id)!;
 const chapters = [
   {
     label: "First inning",
-    title: "A dad in the stands",
-    body: "It started with one player: his daughter. Braulio brought a camera to her softball games so he wouldn't miss the big swings, the diving catches and the dugout laughs. He wanted photos that felt like being there.",
+    title: "It started with my daughter",
+    body: "I started bringing my camera to my daughter's softball games because I didn't want to miss anything. Her at-bats, plays in the field, the girls messing around in the dugout. I just wanted pictures that felt like you were there.",
     photo: byId("d03"),
   },
   {
     label: "Word gets around",
-    title: "“Could you get my kid too?”",
-    body: "Other parents on the team noticed. One by one they asked if he'd mind grabbing a few shots of their kids. He didn't mind at all. Soon he was covering the whole roster, game after game, and families started offering to pay for his time.",
+    title: "“Can you get my kid too?”",
+    body: "Other parents saw the pics and started asking if I could get their kids too. I didn't mind. Pretty soon I was shooting the whole team every weekend, and people started offering to pay me for it.",
     photo: byId("d05"),
   },
   {
     label: "Extra innings",
-    title: "Beyond the diamond",
-    body: "Those sideline sessions became B.A. Diamond Lens. Today Braulio still lives at the ballpark, and local businesses also hire him for events, team photos and grand openings. He brings the same eye to car shows across the Bay Area.",
+    title: "Now it's more than softball",
+    body: "That's how B.A. Diamond Lens started. I'm still at the field most weekends, but now I also shoot events for local businesses and car shows around the Bay.",
     photo: byId("cars01"),
   },
 ];
 
 const values = [
-  { title: "Patience of a parent", body: "Kids don't pose mid-game. He waits for the real moment: the swing, the slide, the grin after." },
-  { title: "Every kid counts", body: "Not just the star player. Every player on the roster gets moments worth framing." },
-  { title: "Fast & friendly", body: "Quick turnaround, easy galleries, and someone who actually likes being at the field." },
+  { title: "I know the game", body: "I've spent a lot of time at the field. I know when the big moment is coming, so I'm ready for it." },
+  { title: "Every kid gets shots", body: "Not just the kid who hit the home run. Everybody on the roster gets good pictures." },
+  { title: "No long wait", body: "You're not waiting a month. Pics are usually back within the week." },
 ];
 
 export default function AboutPage() {
@@ -47,8 +47,8 @@ export default function AboutPage() {
     <>
       <PageHeader eyebrow="About the photographer" title="From the stands" accent="to behind the lens.">
         <p>
-          Hi, I&rsquo;m {site.photographer}. I&rsquo;m a dad, a ball-field regular, and the photographer behind{" "}
-          {site.name}, based in {site.region}.
+          I&rsquo;m {site.photographer}. Softball dad first, photographer second. I run {site.name} out of the
+          Bay Area.
         </p>
       </PageHeader>
 
@@ -62,8 +62,8 @@ export default function AboutPage() {
         </Reveal>
         <Reveal delay={0.1} className="flex flex-col justify-center">
           <p className="font-serif text-3xl leading-snug sm:text-4xl">
-            &ldquo;I never planned on becoming a photographer. I just didn&rsquo;t want to miss a single one of my
-            daughter&rsquo;s games, so I started bringing a camera.&rdquo;
+            &ldquo;I never planned on doing this. I just didn&rsquo;t want to miss anything my daughter did on the
+            field, so I started bringing my camera.&rdquo;
           </p>
           <DiamondDivider className="my-10" />
           <div className="grid gap-8 sm:grid-cols-3">

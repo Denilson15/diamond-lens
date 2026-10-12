@@ -101,20 +101,20 @@ export default function Home() {
           <Reveal className="relative">
             <Photo photo={storyPhoto} className="aspect-[4/5] rounded-2xl" />
             <div className="absolute -right-3 -bottom-6 max-w-[16rem] rounded-2xl border border-line bg-ink p-5 shadow-2xl sm:-right-8">
-              <p className="font-serif text-lg italic leading-snug">&ldquo;It started with one player: my daughter.&rdquo;</p>
+              <p className="font-serif text-lg italic leading-snug">&ldquo;I just wanted good pics of my daughter playing.&rdquo;</p>
               <p className="eyebrow mt-3 !text-[0.6rem]">Braulio, photographer</p>
             </div>
           </Reveal>
           <Reveal delay={0.1}>
             <SectionHeading eyebrow="The story" title="It started" accent="in the stands.">
               <p>
-                Braulio picked up a camera to capture his daughter playing softball. Before long, other parents
-                on the team were asking if he could grab a few shots of their kids too. Then they started
-                offering to pay.
+                Braulio started taking his camera to his daughter&rsquo;s softball games. Then the other parents
+                on the team saw the pics and asked if he could get their kids too. Not long after, people were
+                offering to pay him.
               </p>
               <p className="mt-4">
-                Diamond Lens grew from there. It&rsquo;s still rooted in the ball field, and it now covers events,
-                local businesses and car shows across the Bay Area.
+                That&rsquo;s how Diamond Lens started. He&rsquo;s still at the field most weekends, and now he
+                shoots events, local businesses and car shows around the Bay too.
               </p>
             </SectionHeading>
             <div className="mt-8">
