@@ -35,7 +35,7 @@ export function GalleryGrid({ photos }: { photos: PhotoT[] }) {
                 aria-selected={active}
                 type="button"
                 onClick={() => setFilter(c.id)}
-                className={`relative shrink-0 rounded-full px-5 py-2.5 font-display text-xs uppercase tracking-[0.16em] transition-colors ${
+                className={`relative inline-flex min-h-11 shrink-0 items-center rounded-full px-5 font-display text-xs uppercase tracking-[0.16em] transition-colors ${
                   active ? "text-ink" : "text-cream-dim hover:text-cream"
                 }`}
               >
@@ -64,7 +64,7 @@ export function GalleryGrid({ photos }: { photos: PhotoT[] }) {
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
-              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay: Math.min(i, 12) * 0.05 }}
               className="break-inside-avoid"
             >
               <button

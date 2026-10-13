@@ -1,15 +1,29 @@
 import type { Metadata, Viewport } from "next";
 import "@fontsource-variable/oswald";
-import "@fontsource-variable/inter";
+import "@fontsource-variable/archivo/wdth.css";
 import "@fontsource/instrument-serif/400.css";
 import "@fontsource/instrument-serif/400-italic.css";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { MobileBookBar } from "@/components/MobileBookBar";
 import { site } from "@/data/site";
 import { Providers } from "@/components/Providers";
+import { businessJsonLd, rootOg } from "@/data/seo";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
+  alternates: { canonical: "/" },
+  keywords: [
+    "Bay Area sports photographer",
+    "softball photographer",
+    "baseball photographer",
+    "team photos",
+    "event photographer Bay Area",
+    "quinceañera photographer",
+    "graduation photos",
+    "car show photography",
+  ],
   title: {
     default: `${site.name} | Sports & Event Photography, ${site.regionShort}`,
     template: `%s | ${site.name}`,
@@ -20,6 +34,15 @@ export const metadata: Metadata = {
     title: site.name,
     description: "Every play. Every moment. Sports and event photography in the Bay Area.",
     type: "website",
+    siteName: site.name,
+    url: "/",
+    images: [rootOg.ogImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.name,
+    description: "Every play. Every moment. Sports and event photography in the Bay Area.",
+    images: [rootOg.ogImage.url],
   },
 };
 
@@ -37,12 +60,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd).replace(/</g, "\\u003c") }}
+        />
         <Providers>
           <Nav />
           <main id="main" className="flex-1">
             {children}
           </main>
           <Footer />
+          <MobileBookBar />
         </Providers>
       </body>
     </html>

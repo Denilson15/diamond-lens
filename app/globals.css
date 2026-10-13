@@ -7,16 +7,17 @@
   --color-ink-3: #1a201d;
   --color-cream: #f3ebdd;
   --color-cream-dim: #b9b1a3;
-  --color-muted: #8a8478;
+  --color-muted: #a39d90; /* ≥4.5:1 on every surface incl. field-deep */
   --color-field: #2e6b4e;
-  --color-field-bright: #4f9a74;
+  --color-field-bright: #62ad86; /* ≥4.5:1 on ink and field-deep */
   --color-field-deep: #173829;
   --color-stitch: #d2343f;
+  --color-stitch-soft: #f08a92; /* error text, 4.5:1+ on dark surfaces */
   --color-line: rgb(243 235 221 / 0.1);
 
   --font-display: "Oswald Variable", "Arial Narrow", sans-serif;
   --font-serif: "Instrument Serif", Georgia, serif;
-  --font-sans: "Inter Variable", system-ui, sans-serif;
+  --font-sans: "Archivo Variable", system-ui, sans-serif;
 
   --animate-marquee: marquee 40s linear infinite;
 }
@@ -60,6 +61,26 @@ body::after {
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--color-field-bright);
+}
+
+/* Tailwind v4 resets buttons to the default cursor; clickable things should look clickable */
+button:not(:disabled),
+[role="button"],
+summary,
+label[for] {
+  cursor: pointer;
+}
+
+/* Scroll reveal: content is visible by default (no JS = fully readable).
+   Only blocks that start below the fold are hidden by JS, then animated in. */
+.reveal {
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-pending {
+  opacity: 0;
+  transform: translateY(28px);
 }
 
 :focus-visible {

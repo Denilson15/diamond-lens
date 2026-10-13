@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/data/seo";
 import { aboutPhotos, portraitPhoto } from "@/data/photos";
 import { site } from "@/data/site";
 import { PageHeader } from "@/components/PageHeader";
@@ -8,10 +9,7 @@ import { DiamondDivider, DiamondMark } from "@/components/DiamondMark";
 import { Button, InstagramIcon } from "@/components/Button";
 import { CtaBand } from "@/components/CtaBand";
 
-export const metadata: Metadata = {
-  title: "About",
-  description: "How a softball dad with a camera became B.A. Diamond Lens, a Bay Area photographer for sports and all kinds of events.",
-};
+export const metadata: Metadata = pageMeta("/about/", "About", "How a softball dad with a camera became B.A. Diamond Lens, a Bay Area photographer for sports and all kinds of events.");
 
 const chapters = [
   {

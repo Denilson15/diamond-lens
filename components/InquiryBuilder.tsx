@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { site } from "@/data/site";
 import { packages } from "@/data/packages";
 import { InstagramIcon } from "./Button";
@@ -23,10 +23,14 @@ export function InquiryBuilder() {
     notes: "",
   });
   const [status, setStatus] = useState<"idle" | "copied" | "manual">("idle");
+  const [nameError, setNameError] = useState(false);
+  const nameRef = useRef<HTMLInputElement>(null);
+  const previewRef = useRef<HTMLPreElement>(null);
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setForm((f) => ({ ...f, [k]: e.target.value }));
     setStatus("idle");
+    if (k === "name" && e.target.value.trim()) setNameError(false);
   };
 
   const message = useMemo(() => {
@@ -44,8 +48,14 @@ export function InquiryBuilder() {
 
   const send = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!form.name.trim()) {
+      setNameError(true);
+      nameRef.current?.focus();
+      return;
+    }
     // Open the tab synchronously so pop-up blockers allow it.
     // ("noopener" in the features string would make window.open return null.)
+    // If it's blocked, the visible "Open Instagram chat" link below still works.
     const win = window.open(site.instagramDmUrl, "_blank");
     if (win) win.opener = null;
     try {
@@ -53,15 +63,40 @@ export function InquiryBuilder() {
       setStatus("copied");
     } catch {
       setStatus("manual");
+      // Select the message so it's one tap to copy by hand.
+      const sel = window.getSelection();
+      if (sel && previewRef.current) {
+        const range = document.createRange();
+        range.selectNodeContents(previewRef.current);
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
     }
-    if (!win) window.location.href = site.instagramDmUrl;
   };
 
   return (
-    <form onSubmit={send} className="grid gap-5 rounded-3xl border border-line bg-ink-2 p-6 sm:grid-cols-2 sm:p-10">
+    <form onSubmit={send} noValidate className="grid gap-5 rounded-3xl border border-line bg-ink-2 p-6 sm:grid-cols-2 sm:p-10">
       <label className="block">
-        <span className={label}>Your name</span>
-        <input required value={form.name} onChange={set("name")} className={field} placeholder="Jane Parent" autoComplete="name" />
+        <span className={label}>
+          Your name <span aria-hidden className="text-field-bright">*</span>
+          <span className="sr-only">(required)</span>
+        </span>
+        <input
+          ref={nameRef}
+          required
+          value={form.name}
+          onChange={set("name")}
+          aria-invalid={nameError}
+          aria-describedby={nameError ? "name-error" : undefined}
+          className={`${field} ${nameError ? "!border-stitch" : ""}`}
+          placeholder="Jane Parent"
+          autoComplete="name"
+        />
+        {nameError && (
+          <span id="name-error" className="mt-2 block text-sm text-stitch-soft">
+            Add your name so Braulio knows who&rsquo;s asking.
+          </span>
+        )}
       </label>
       <label className="block">
         <span className={label}>Team / business / family</span>
@@ -97,7 +132,7 @@ export function InquiryBuilder() {
 
       <div className="sm:col-span-2">
         <p className={label}>Your message preview</p>
-        <pre className="mt-2 whitespace-pre-wrap rounded-xl border border-dashed border-line bg-ink/60 p-4 font-sans text-sm leading-relaxed text-cream-dim">
+        <pre ref={previewRef} className="mt-2 whitespace-pre-wrap rounded-xl border border-dashed border-line bg-ink/60 p-4 font-sans text-sm leading-relaxed text-cream-dim">
           {message}
         </pre>
       </div>
@@ -110,9 +145,22 @@ export function InquiryBuilder() {
           <InstagramIcon /> Copy & open Instagram
         </button>
         <p className="text-sm text-cream-dim" aria-live="polite">
-          {status === "copied" && "Copied! Paste it into the Instagram chat and hit send."}
-          {status === "manual" && "Couldn't copy automatically. Select the preview above, copy it, then paste it in Instagram."}
+          {status === "copied" && "Copied. Paste it into the Instagram chat and hit send."}
+          {status === "manual" && "Couldn't copy automatically. The message above is selected: copy it, then paste it in Instagram."}
           {status === "idle" && "Your message is copied, then Instagram opens so you can paste and send."}
+          {status !== "idle" && (
+            <>
+              {" "}
+              <a
+                href={site.instagramDmUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-cream underline underline-offset-4"
+              >
+                Open Instagram chat
+              </a>
+            </>
+          )}
         </p>
       </div>
     </form>

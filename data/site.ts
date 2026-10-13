@@ -14,6 +14,8 @@ export const site = {
     return `https://ig.me/m/${this.instagramHandle}`;
   },
   tagline: "Sports, events & everything in between",
+  /** Public address of the site. Change this one line when a custom domain is set up. */
+  url: "https://ba-diamond-len.netlify.app",
 } as const;
 
 export const navLinks = [

@@ -28,14 +28,22 @@ npm run build      # static site written to ./out
 The current photos in `public/photos/` are **Creative Commons placeholders** from Flickr. Their credits are
 listed on `/credits` and in the full-screen viewer. To replace them:
 
-1. Export his photos as JPG, about 2000px on the long side, and drop them in `public/photos/`.
+1. Export his photos about 2000px on the long side, convert them to WebP (smaller and faster than JPG), and drop them in `public/photos/`.
 2. In `data/photos.ts`, add an entry for each one (no `credit` needed for his own work):
    ```ts
-   { id: "pitcher-01", category: "diamond", src: "/photos/pitcher-01.jpg", width: 1600, height: 2000, alt: "Pitcher mid-delivery" },
+   { id: "pitcher-01", category: "diamond", src: "/photos/pitcher-01.webp", width: 1600, height: 2000, alt: "Pitcher mid-delivery" },
    ```
    `category` is `"diamond"`, `"events"` or `"cars"`. `width`/`height` only need the right ratio.
 3. Update `galleryOrder`, `heroPhoto`, `featuredIds`, `storyPhoto`, `portraitPhoto` and `aboutPhotos` in that file.
 4. Once every placeholder is gone, delete the old files, `app/credits/`, and the credits line in `components/Footer.tsx`.
+
+## SEO
+
+- `data/site.ts` → `url` is the site's public address. It feeds the canonical links, `sitemap.xml`,
+  `robots.txt`, link previews and Google's business info. Change that one line when a custom domain is set up.
+- `data/seo.ts` holds the business info for Google (Bay Area photographer, Instagram, services and starting
+  prices, read from `data/packages.ts`) and the per-page metadata helper.
+- `public/og.jpg` is the 1200×630 image shown when the link is shared.
 
 ## Deploy
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/data/seo";
 import { faqs, packages } from "@/data/packages";
 import { PageHeader } from "@/components/PageHeader";
 import { PackageCard } from "@/components/PackageCard";
@@ -7,10 +8,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { Testimonials } from "@/components/Testimonials";
 import { CtaBand } from "@/components/CtaBand";
 
-export const metadata: Metadata = {
-  title: "Services & Pricing",
-  description: "Game days, team photos, birthdays, quinceañeras, graduations, business events and car shows in the Bay Area.",
-};
+export const metadata: Metadata = pageMeta("/services/", "Services & Pricing", "Game days, team photos, birthdays, quinceañeras, graduations, business events and car shows in the Bay Area.");
 
 const steps = [
   ["Message", "DM on Instagram with your date, field and what you need."],

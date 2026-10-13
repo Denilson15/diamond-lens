@@ -18,6 +18,7 @@ export function Lightbox({
   const photo = photos[index];
   const closeRef = useRef<HTMLButtonElement>(null);
   const touchX = useRef<number | null>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   const prev = () => onIndex((index - 1 + photos.length) % photos.length);
   const next = () => onIndex((index + 1) % photos.length);
@@ -27,6 +28,20 @@ export function Lightbox({
       if (e.key === "Escape") onClose();
       if (e.key === "ArrowLeft") onIndex((index - 1 + photos.length) % photos.length);
       if (e.key === "ArrowRight") onIndex((index + 1) % photos.length);
+      // Keep Tab focus inside the dialog while it's open.
+      if (e.key === "Tab" && dialogRef.current) {
+        const items = dialogRef.current.querySelectorAll<HTMLElement>("button, a[href]");
+        if (!items.length) return;
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -44,6 +59,7 @@ export function Lightbox({
 
   return (
     <div
+      ref={dialogRef}
       role="dialog"
       aria-modal="true"
       aria-label={photo.alt}
@@ -97,7 +113,7 @@ export function Lightbox({
               e.stopPropagation();
               b.fn();
             }}
-            className={`absolute top-1/2 ${b.side} hidden size-12 -translate-y-1/2 place-items-center rounded-full border border-line bg-ink/60 text-cream transition-colors hover:bg-cream hover:text-ink sm:grid`}
+            className={`absolute top-1/2 ${b.side} grid size-11 -translate-y-1/2 place-items-center sm:size-12 rounded-full border border-line bg-ink/60 text-cream transition-colors hover:bg-cream hover:text-ink sm:grid`}
           >
             <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
               <path d={b.d} />

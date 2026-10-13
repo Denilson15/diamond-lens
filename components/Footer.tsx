@@ -15,10 +15,10 @@ export function Footer() {
         </div>
         <div>
           <p className="eyebrow">Explore</p>
-          <ul className="mt-4 space-y-2.5 text-sm">
+          <ul className="mt-3 text-sm">
             {navLinks.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="text-cream-dim transition-colors hover:text-cream">
+                <Link href={l.href} className="inline-flex min-h-11 items-center text-cream-dim transition-colors hover:text-cream">
                   {l.label}
                 </Link>
               </li>
@@ -31,7 +31,7 @@ export function Footer() {
             href={site.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-2 text-sm text-cream-dim transition-colors hover:text-cream"
+            className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm text-cream-dim transition-colors hover:text-cream"
           >
             <InstagramIcon /> @{site.instagramHandle}
           </a>
@@ -39,7 +39,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-line">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-xs text-muted sm:flex-row sm:justify-between sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 pt-6 pb-28 text-xs text-muted md:pb-6 sm:flex-row sm:justify-between sm:px-6 lg:px-8">
           <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
           <p>
             Placeholder photos are Creative Commons from Flickr.{" "}

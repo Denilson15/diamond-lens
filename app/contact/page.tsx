@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/data/seo";
 import { site } from "@/data/site";
 import { PageHeader } from "@/components/PageHeader";
 import { InquiryBuilder } from "@/components/InquiryBuilder";
 import { InstagramIcon } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
 
-export const metadata: Metadata = {
-  title: "Contact & Booking",
-  description: "Book B.A. Diamond Lens for your game, party, graduation, business event or car show. Message on Instagram.",
-};
+export const metadata: Metadata = pageMeta("/contact/", "Contact & Booking", "Book B.A. Diamond Lens for your game, party, graduation, business event or car show. Message on Instagram.");
 
 export default function ContactPage() {
   return (

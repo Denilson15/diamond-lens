@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/data/seo";
 import { photos } from "@/data/photos";
 import { PageHeader } from "@/components/PageHeader";
 import { GalleryGrid } from "@/components/GalleryGrid";
 import { CtaBand } from "@/components/CtaBand";
 
-export const metadata: Metadata = {
-  title: "Gallery",
-  description: "Recent work by B.A. Diamond Lens: softball and baseball, events and car shows."
-};
+export const metadata: Metadata = pageMeta("/gallery/", "Gallery", "Recent work by B.A. Diamond Lens: softball and baseball, events and car shows.");
 
 export default function GalleryPage() {
   return (

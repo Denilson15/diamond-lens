@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { navLinks, site } from "@/data/site";
 import { Logo } from "./Logo";
 import { InstagramIcon } from "./Button";
@@ -26,12 +26,26 @@ export function Nav() {
     setOpen(false);
   }
 
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    if (!open) return;
+    // Move focus into the menu, close on Esc and hand focus back to the toggle.
+    menuRef.current?.querySelector<HTMLElement>("a")?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setOpen(false);
+      toggleRef.current?.focus();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href.replace(/\/$/, ""));
+  // Compare by last path segment so it works with "/about/", "/about" and "about.html".
+  const segment = (p: string) => p.replace(/\/+$/, "").split("/").pop()!.replace(/\.html$/, "").replace(/^index$/, "");
+  const isActive = (href: string) => segment(pathname) === segment(href);
 
   return (
     <header
@@ -73,6 +87,7 @@ export function Nav() {
         </a>
 
         <button
+          ref={toggleRef}
           type="button"
           className="relative grid size-11 place-items-center md:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -87,6 +102,7 @@ export function Nav() {
 
       <div
         id="mobile-menu"
+        ref={menuRef}
         className={`fixed inset-x-0 top-18 bottom-0 h-[calc(100dvh-4.5rem)] bg-ink transition-[opacity,visibility] duration-300 md:hidden ${
           open ? "visible opacity-100" : "invisible opacity-0"
         }`}
